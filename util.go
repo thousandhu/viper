@@ -77,14 +77,8 @@ func insensitiviseMap(m map[string]interface{}) {
 			// nested map: recursively insensitivise
 			insensitiviseMap(val.(map[string]interface{}))
 		}
-
-		lower := strings.ToLower(key)
-		if key != lower {
-			// remove old key (not lower-cased)
-			delete(m, key)
-		}
 		// update map
-		m[lower] = val
+		m[key] = val
 	}
 }
 
